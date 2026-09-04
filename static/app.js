@@ -8,7 +8,12 @@ function addMessage(text, role) {
     const element = document.createElement("div");
 
     element.className = `message ${role}`;
-    element.textContent = text;
+
+    if (role === "assistant") {
+        element.innerHTML = DOMPurify.sanitize(marked.parse(text));
+    } else {
+        element.textContent = text;
+    }
 
     messages.appendChild(element);
 
