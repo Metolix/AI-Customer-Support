@@ -108,8 +108,6 @@ body {
 
     line-height: 1.45;
     font-size: 14px;
-
-    white-space: pre-wrap;
 }
 
 .message.assistant {
@@ -124,6 +122,68 @@ body {
 
     background: #111;
     color: white;
+
+    white-space: pre-wrap;
+}
+
+.message p {
+    margin: 0 0 8px;
+}
+
+.message p:last-child {
+    margin-bottom: 0;
+}
+
+.message h1,
+.message h2,
+.message h3,
+.message h4,
+.message h5,
+.message h6 {
+    margin: 0 0 8px;
+    line-height: 1.3;
+}
+
+.message ul,
+.message ol {
+    margin: 6px 0 8px;
+    padding-left: 20px;
+}
+
+.message li + li {
+    margin-top: 4px;
+}
+
+.message code {
+    padding: 2px 5px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.08);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.9em;
+}
+
+.message pre {
+    margin: 8px 0;
+    padding: 10px;
+    overflow-x: auto;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.message pre code {
+    padding: 0;
+    background: transparent;
+}
+
+.message blockquote {
+    margin: 8px 0;
+    padding-left: 10px;
+    border-left: 3px solid #ccc;
+}
+
+.message a {
+    color: inherit;
+    text-decoration: underline;
 }
 
 .input-area {
