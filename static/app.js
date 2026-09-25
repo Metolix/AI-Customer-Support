@@ -1,101 +1,120 @@
 const messages = document.getElementById("messages");
 const input = document.getElementById("message");
 const send = document.getElementById("send");
+const form = document.getElementById("chat-form");
+const typing = document.getElementById("typing");
+const suggestions = document.querySelectorAll("[data-prompt]");
 
 let history = [];
+let isSending = false;
+
+function renderAssistant(text) {
+    if (window.marked && window.DOMPurify) {
+        return DOMPurify.sanitize(marked.parse(text));
+    }
+
+    const safe = document.createElement("div");
+    safe.textContent = text;
+    return safe.innerHTML.replace(/\n/g, "<br>");
+}
 
 function addMessage(text, role) {
     const element = document.createElement("div");
-
     element.className = `message ${role}`;
 
-    if (role === "assistant") {
-        element.innerHTML = DOMPurify.sanitize(marked.parse(text));
-    } else {
-        element.textContent = text;
-    }
+    const label = document.createElement("div");
+    label.className = "message-label";
+    label.textContent = role === "assistant" ? "LUXE / ASSISTANT" : "YOU";
+    element.appendChild(label);
+
+    const body = document.createElement("div");
+    body.innerHTML = role === "assistant"
+        ? renderAssistant(text)
+        : "";
+    if (role === "user") body.textContent = text;
+    element.appendChild(body);
 
     messages.appendChild(element);
-
     messages.scrollTop = messages.scrollHeight;
 }
 
-async function sendMessage() {
+function setBusy(busy) {
+    isSending = busy;
+    send.disabled = busy;
+    input.disabled = busy;
+    typing.hidden = !busy;
+}
 
-    const text = input.value.trim();
+function autoResize() {
+    input.style.height = "auto";
+    input.style.height = `${Math.min(input.scrollHeight, 132)}px`;
+}
 
-    if (!text || send.disabled) {
-        return;
-    }
+async function sendMessage(text = input.value.trim()) {
+    if (!text || isSending) return;
 
     addMessage(text, "user");
-
-    history.push({
-        role: "user",
-        content: text
-    });
+    history.push({ role: "user", content: text });
 
     input.value = "";
-
-    send.disabled = true;
-    input.disabled = true;
+    autoResize();
+    setBusy(true);
 
     try {
-
         const response = await fetch("/api/chat", {
             method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 message: text,
                 history: history.slice(-10)
             })
         });
 
-        const data = await response.json();
+        let data;
+        try {
+            data = await response.json();
+        } catch {
+            throw new Error("Invalid server response.");
+        }
 
         if (!response.ok) {
-            throw new Error(
-                data.detail || "Something went wrong."
-            );
+            throw new Error(data.detail || "Something went wrong.");
         }
 
         addMessage(data.response, "assistant");
-
-        history.push({
-            role: "assistant",
-            content: data.response
-        });
-
+        history.push({ role: "assistant", content: data.response });
     } catch (error) {
-
         addMessage(
-            "Sorry, I'm unable to respond right now. Please contact the business directly.",
+            "I’m unable to respond right now. Please contact Luxe Hair Studio directly.",
             "assistant"
         );
-
     } finally {
-
-        send.disabled = false;
-        input.disabled = false;
-
+        setBusy(false);
         input.focus();
     }
 }
 
-send.addEventListener("click", sendMessage);
+form.addEventListener("submit", event => {
+    event.preventDefault();
+    sendMessage();
+});
+
+input.addEventListener("input", autoResize);
 
 input.addEventListener("keydown", event => {
-
-    if (
-        event.key === "Enter" &&
-        !event.shiftKey
-    ) {
+    if (event.key === "Enter" && !event.shiftKey && !event.isComposing) {
         event.preventDefault();
-        sendMessage();
+        form.requestSubmit();
     }
-
 });
+
+suggestions.forEach(button => {
+    button.addEventListener("click", () => {
+        const prompt = button.dataset.prompt;
+        input.value = prompt;
+        autoResize();
+        sendMessage(prompt);
+    });
+});
+
+autoResize();
