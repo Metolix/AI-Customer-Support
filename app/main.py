@@ -3,7 +3,7 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from .ai import generate_response
 from .security import check_input
@@ -21,7 +21,7 @@ app.add_middleware(
 
 class ChatRequest(BaseModel):
     message: str
-    history: list[dict] = []
+    history: list[dict] = Field(default_factory=list)
 
 
 @app.get("/health")
@@ -34,9 +34,7 @@ def chat(request: ChatRequest):
     allowed, error = check_input(request.message)
 
     if not allowed:
-        return {
-            "response": error
-        }
+        return {"response": error}
 
     safe_history = []
 
@@ -53,19 +51,15 @@ def chat(request: ChatRequest):
         if len(content) > 4000:
             continue
 
-        safe_history.append(
-            {
-                "role": role,
-                "content": content
-            }
-        )
+        safe_history.append({
+            "role": role,
+            "content": content
+        })
 
-    safe_history.append(
-        {
-            "role": "user",
-            "content": request.message
-        }
-    )
+    safe_history.append({
+        "role": "user",
+        "content": request.message
+    })
 
     try:
         answer = generate_response(safe_history)
@@ -76,9 +70,7 @@ def chat(request: ChatRequest):
                 detail="Empty AI response."
             )
 
-        return {
-            "response": answer
-        }
+        return {"response": answer}
 
     except Exception:
         raise HTTPException(
