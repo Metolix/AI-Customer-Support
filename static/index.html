@@ -3,124 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Luxe Hair Studio — AI Support Demo</title>
-
+    <meta name="theme-color" content="#f5f5f5">
+    <meta name="description" content="Luxe Hair Studio AI customer support demonstration.">
+    <title>Luxe Hair Studio / AI Support Demo</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-
-<div class="demo-page">
-
-    <div class="demo-notice">
-        <div class="demo-badge">DEMO</div>
-
-        <div class="demo-copy">
-            <strong>This is a demonstration website.</strong>
-            <span>You're testing a sample AI customer-support assistant configured for a fictional business.</span>
+<main class="shell">
+    <header class="topbar" aria-label="Demo header">
+        <a class="wordmark" href="/" aria-label="Luxe Hair Studio home">LUXE /</a>
+        <div class="topbar-meta">
+            <span class="eyebrow">AI SUPPORT</span>
+            <span class="live-pill"><span aria-hidden="true"></span> Demo online</span>
         </div>
+    </header>
 
-        <details class="demo-details">
-            <summary>Before you try it</summary>
+    <section class="intro" aria-labelledby="page-title">
+        <div>
+            <p class="eyebrow">01 / CUSTOMER SUPPORT</p>
+            <h1 id="page-title">Answers,<br><em>without the wait.</em></h1>
+        </div>
+        <div class="intro-copy">
+            <p>A business-specific support assistant for Luxe Hair Studio. Ask about services, prices, opening hours, appointments, policies and location.</p>
+            <p class="muted">This is a demonstration using sample business data.</p>
+        </div>
+    </section>
 
-            <div class="demo-info">
-                <div>
-                    <strong>What you're seeing</strong>
-                    <p>This demo shows how an AI support assistant can answer customer questions using a business-specific knowledge base.</p>
-                </div>
-
-                <div>
-                    <strong>The business is fictional</strong>
-                    <p>“Luxe Hair Studio” and its information are sample data created for demonstration purposes. Nothing here represents a real business.</p>
-                </div>
-
-                <div>
-                    <strong>Responses are AI-generated</strong>
-                    <p>The assistant can make mistakes, misunderstand questions, or provide incomplete answers. A production system would be tested and monitored before handling real customers.</p>
-                </div>
-
-                <div>
-                    <strong>Don't enter sensitive information</strong>
-                    <p>Please don't enter passwords, payment details, private customer information, or anything confidential. This is not a production customer-support channel.</p>
-                </div>
-
-                <div>
-                    <strong>This is not connected to your business</strong>
-                    <p>The demo does not access your website, CRM, inbox, orders, bookings, customer database, or internal systems. Those integrations can be added to a production deployment where appropriate.</p>
-                </div>
-
-                <div>
-                    <strong>What a real deployment can include</strong>
-                    <p>A production version can be trained on your approved business information, branded to match your website, connected to relevant tools, given escalation rules, and configured around your support workflow.</p>
-                </div>
-
-                <div>
-                    <strong>What to test</strong>
-                    <p>Try common customer questions, unusual questions, follow-ups, pricing questions, policy questions, and questions the assistant should not be able to answer. The goal is to see how the experience feels—not to treat every answer as authoritative.</p>
-                </div>
-
-                <div>
-                    <strong>Important</strong>
-                    <p>This demo is intended for evaluation only. Any production implementation should use appropriate security, privacy, data-retention, access-control, monitoring, and human-escalation practices.</p>
+    <section class="workspace" aria-label="AI support demonstration">
+        <aside class="context-panel">
+            <div class="panel-section">
+                <p class="eyebrow">02 / TRY IT</p>
+                <h2>Start with a question.</h2>
+                <div class="suggestions" aria-label="Suggested questions">
+                    <button class="suggestion" type="button" data-prompt="How much is a women's haircut?">What does a haircut cost?</button>
+                    <button class="suggestion" type="button" data-prompt="What are your opening hours?">When are you open?</button>
+                    <button class="suggestion" type="button" data-prompt="How do I book an appointment?">How do I book?</button>
+                    <button class="suggestion" type="button" data-prompt="Do you accept walk-ins?">Do you accept walk-ins?</button>
                 </div>
             </div>
-        </details>
-    </div>
 
-    <div class="chat-wrapper">
-
-        <div class="chat-header">
-            <div class="business-icon">L</div>
-
-            <div>
-                <div class="business-name">
-                    Luxe Hair Studio
-                </div>
-
-                <div class="status">
-                    <span></span>
-                    Demo assistant
-                </div>
-            </div>
-        </div>
-
-
-        <div id="messages" class="messages">
-
-            <div class="message assistant">
-                Hi! 👋 How can I help you with Luxe Hair Studio?
+            <div class="panel-section panel-note">
+                <p class="eyebrow">03 / ABOUT THIS DEMO</p>
+                <details>
+                    <summary>Read before you try it</summary>
+                    <div class="details-copy">
+                        <p><strong>Sample business.</strong> Luxe Hair Studio is fictional and all business information is sample data.</p>
+                        <p><strong>AI-generated.</strong> Responses can be incomplete or incorrect. A production system should be tested and monitored before handling real customers.</p>
+                        <p><strong>Private information.</strong> Do not enter passwords, payment details, private customer information or anything confidential.</p>
+                        <p><strong>Not connected.</strong> This demo does not access a real website, CRM, inbox, booking calendar, orders or customer database.</p>
+                    </div>
+                </details>
             </div>
 
-        </div>
+            <div class="panel-footer">sidhak.dev / AI that answers</div>
+        </aside>
 
+        <section class="chat-card" aria-label="Luxe Hair Studio chat">
+            <header class="chat-header">
+                <div class="business-mark" aria-hidden="true">L</div>
+                <div class="business-details">
+                    <div class="business-name">Luxe Hair Studio</div>
+                    <div class="status"><span aria-hidden="true"></span> AI support assistant</div>
+                </div>
+                <span class="header-label">DEMO</span>
+            </header>
 
-        <div class="input-area">
+            <div id="messages" class="messages" role="log" aria-live="polite" aria-label="Conversation">
+                <div class="message assistant">
+                    <div class="message-label">LUXE / ASSISTANT</div>
+                    <div>Hi. How can I help with Luxe Hair Studio?</div>
+                </div>
+            </div>
 
-            <textarea
-                id="message"
-                placeholder="Ask us anything about our services..."
-                rows="1"
-            ></textarea>
+            <div id="typing" class="typing" hidden aria-live="polite">
+                <span></span><span></span><span></span>
+                <span class="typing-text">Thinking</span>
+            </div>
 
-            <button id="send">
-                Send
-            </button>
+            <form id="chat-form" class="input-area">
+                <label class="sr-only" for="message">Message Luxe Hair Studio</label>
+                <textarea id="message" name="message" placeholder="Ask about the salon..." rows="1" maxlength="2000" autocomplete="off"></textarea>
+                <button id="send" type="submit" aria-label="Send message">
+                    <span>Send</span>
+                    <span aria-hidden="true">↗</span>
+                </button>
+            </form>
+            <div class="chat-footnote">AI-generated responses · Sample business data</div>
+        </section>
+    </section>
 
-        </div>
-
-    </div>
-
-    <div class="demo-footer">
-        <span>Demo environment · Sample business data · AI-generated responses</span>
+    <footer class="page-footer">
+        <span>DEMO ENVIRONMENT</span>
         <span>Do not enter sensitive or confidential information.</span>
-    </div>
-
-</div>
+    </footer>
+</main>
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
 <script src="/app.js"></script>
-
 </body>
 </html>
