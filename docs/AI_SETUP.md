@@ -10,7 +10,18 @@ The AI asks the owner questions in small groups, checks for missing or contradic
 
 **[Copy the full interviewer prompt](../prompts/company-info-interviewer.md)**
 
-Then paste it into the AI you already use.
+### One-click start
+
+These links open a supported AI with a short instruction to use the repository's interviewer prompt. The full prompt remains provider-independent in this repository.
+
+<p>
+<a href="https://chatgpt.com/?q=Use%20the%20AI%20Customer%20Support%20company%20information%20interviewer%20from%20https%3A%2F%2Fgithub.com%2FMetolix%2FAI-Customer-Support%2Fblob%2Fmain%2Fprompts%2Fcompany-info-interviewer.md%20and%20interview%20me%20to%20create%20my%20company_info.txt%20file."><img src="https://img.shields.io/badge/Use%20with-ChatGPT-000000?logo=openai&logoColor=white" alt="Use with ChatGPT"></a>
+<a href="https://claude.ai/new?q=Use%20the%20AI%20Customer%20Support%20company%20information%20interviewer%20from%20https%3A%2F%2Fgithub.com%2FMetolix%2FAI-Customer-Support%2Fblob%2Fmain%2Fprompts%2Fcompany-info-interviewer.md%20and%20interview%20me%20to%20create%20my%20company_info.txt%20file."><img src="https://img.shields.io/badge/Use%20with-Claude-D97757?logo=claude&logoColor=white" alt="Use with Claude"></a>
+<a href="https://gemini.google.com/app?text=Use%20the%20AI%20Customer%20Support%20company%20information%20interviewer%20from%20https%3A%2F%2Fgithub.com%2FMetolix%2FAI-Customer-Support%2Fblob%2Fmain%2Fprompts%2Fcompany-info-interviewer.md%20and%20interview%20me%20to%20create%20my%20company_info.txt%20file."><img src="https://img.shields.io/badge/Use%20with-Gemini-4285F4?logo=google&logoColor=white" alt="Use with Gemini"></a>
+<a href="https://copilot.microsoft.com/?q=Use%20the%20AI%20Customer%20Support%20company%20information%20interviewer%20from%20https%3A%2F%2Fgithub.com%2FMetolix%2FAI-Customer-Support%2Fblob%2Fmain%2Fprompts%2Fcompany-info-interviewer.md%20and%20interview%20me%20to%20create%20my%20company_info.txt%20file."><img src="https://img.shields.io/badge/Use%20with-Copilot-5E5CE6?logo=microsoft&logoColor=white" alt="Use with Copilot"></a>
+</p>
+
+If a provider does not support prefilled prompts, open it below and paste the prompt manually.
 
 ### Open an AI
 
