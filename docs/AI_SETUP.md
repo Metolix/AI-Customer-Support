@@ -31,6 +31,7 @@ If a provider does not support prefilled prompts, open it below and paste the pr
 | Claude | [Open Claude](https://claude.ai/new) |
 | Gemini | [Open Gemini](https://gemini.google.com/) |
 | Microsoft Copilot | [Open Copilot](https://copilot.microsoft.com/) |
+| OpenAI Codex | [Open Codex](https://chatgpt.com/codex) |
 
 The prompt is provider-agnostic. These are simply convenient starting points; any AI that can follow the instructions can be used.
 
