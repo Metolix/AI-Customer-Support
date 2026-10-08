@@ -1,5 +1,13 @@
 # AI Customer Support
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white" alt="Python 3.10+">
+  <img src="https://img.shields.io/badge/FastAPI-API-009688?logo=fastapi&logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/Groq-LLM-F55036?logo=groq&logoColor=white" alt="Groq">
+  <img src="https://img.shields.io/github/actions/workflow/status/Metolix/AI-Customer-Support/ci.yml?branch=main&label=CI&logo=github" alt="CI">
+  <img src="https://img.shields.io/github/license/Metolix/AI-Customer-Support" alt="MIT License">
+</p>
+
 An embeddable AI customer-support widget with a FastAPI backend, Groq inference, configurable business knowledge, input validation, rate limiting, and a simple one-script website integration.
 
 The goal is simple: **put an AI support chat on a website without rebuilding the application from scratch.**
@@ -10,6 +18,7 @@ The goal is simple: **put an AI support chat on a website without rebuilding the
 - FastAPI backend
 - Groq model support
 - Business-specific knowledge from a plain text file
+- **AI-assisted business setup interview** so owners don't have to manually fill the knowledge file
 - Configurable CORS
 - Per-client rate limiting
 - Prompt-injection input checks
@@ -20,6 +29,16 @@ The goal is simple: **put an AI support chat on a website without rebuilding the
 - GitHub Actions CI
 - Security, contribution, deployment, and configuration documentation
 - MIT license
+
+## ⚡ Don't fill out the company file manually
+
+You can have **ChatGPT, Claude, Gemini, Copilot, Codex, or another AI interview you** and build the business information file for you.
+
+**[→ Use the AI Setup Interview](docs/AI_SETUP.md)**
+
+The interviewer asks questions in small groups, adapts to your business, checks for missing information, confirms the final answers, and produces a ready-to-paste `data/company_info.txt`.
+
+You still review the generated file before deploying it.
 
 ## Quick start
 
@@ -74,7 +93,11 @@ Never put `GROQ_API_KEY` in frontend JavaScript.
 
 ### 5. Add your business information
 
-Replace `data/company_info.txt` with your own business information, or point `COMPANY_INFO_FILE` at another file.
+You have two options:
+
+**Recommended:** use the [AI Setup Interview](docs/AI_SETUP.md) to create the file.
+
+**Manual:** replace `data/company_info.txt` with your own business information, or point `COMPANY_INFO_FILE` at another file.
 
 Keep the information factual. The assistant is intentionally instructed not to invent missing business details.
 
@@ -147,6 +170,7 @@ The CI workflow runs the same tests on pushes and pull requests.
 app/                  FastAPI application and AI logic
 data/                 Example business knowledge
 static/               Demo UI and embeddable widget
+prompts/              Reusable AI setup prompts
 tests/                Automated tests
 docs/                 Installation, configuration, security, deployment
 .github/              CI, dependency updates, issue/PR templates
