@@ -8,7 +8,7 @@ Security fixes are made against the current `main` branch and the latest publish
 
 Please do not disclose security vulnerabilities through a public GitHub issue.
 
-Use GitHub's private vulnerability reporting feature if it is enabled for this repository. If that option is unavailable, contact the repository owner privately through GitHub.
+Use GitHub's private vulnerability reporting feature. If that option is unavailable, contact the repository owner privately through GitHub.
 
 Include:
 
